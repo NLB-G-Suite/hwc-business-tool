@@ -11,7 +11,7 @@ import { Credential } from '../../class/credential';
 @Component({
   selector: 'login',
   providers: [KickstarterService, StorageService, HardwareClubService, IndiegogoService],
-  styleUrls: [ './login.component.scss' ],
+  styleUrls: ['../../../assets/scss/main.scss'],
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
@@ -131,9 +131,7 @@ export class LoginComponent implements OnInit {
    */
   public checkLogin(): boolean {
     if (this.kickstarter.connected && this.indiegogo.connected && this.hardwareclub.connected) {
-      console.log('Routing to home');
       this.router.navigate(['/home']);
-      console.log('Routing done');
       return true;
     }
     return false;

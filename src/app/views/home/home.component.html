@@ -1,1 +1,13 @@
-hello de la page home
+<div>
+	hello de la page home
+
+	<form (ngSubmit)="search(keywords, sort)" name="search">
+		<input type="text" name="search" placeholder="Keywords ..." [(ngModel)]="keywords">
+		<h3>Filters</h3>
+		<input type="radio" name="sort" value="popularity" [(ngModel)]="sort"> Popularity
+		<input type="radio" name="sort" value="most_founded" [(ngModel)]="sort"> Most founded
+		<input type="radio" name="sort" value=" newest" [(ngModel)]="sort"> Newest
+		<input type="radio" name="sort" value="end_date" [(ngModel)]="sort"> End date
+		<input value="Search" type="submit">
+	</form>
+</div>

@@ -1,4 +1,9 @@
-/*styles for home content only*/
+@import './fonts';
+
+div {
+	color: green;
+	font-family: 'Montserrat';
+}
 
 .update-notification{
 	position: absolute;
@@ -22,3 +27,4 @@
 		}
 	}
 }
+

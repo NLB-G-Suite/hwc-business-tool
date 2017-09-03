@@ -6,6 +6,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import { IndiegogoOption } from '../class/indiegogoOption';
+import { Project } from '../class/project';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -27,13 +28,13 @@ export class IndiegogoService {
   public signin(
     email: string,
     password: string,
-    credentialType = 'email',
-    grantType = 'password'): Promise<any> {
-    const body = { email, password, credentialType, grantType };
+    credential_type = 'email',
+    grant_type = 'password'): Promise<any> {
+    const body = { email, password, credential_type, grant_type };
 
-    body.credentialType = 'email';
+    body.credential_type = 'email';
     body.email = email;
-    body.grantType = 'password';
+    body.grant_type = 'password';
     body.password = password;
 
     return this.cURL('https://auth.indiegogo.com/oauth/token', body);
@@ -66,14 +67,40 @@ export class IndiegogoService {
   // https://api.indiegogo.com/2/search/campaigns.json?page=1&title=Testouille
   // ————— CATEGORIES —————
   // https://api.indiegogo.com/2/search/campaigns.json
-  //?category=Phones%20%26%20Accessories&page=1&sort=popular_all
+  // ?category=Phones%20%26%20Accessories&page=1&sort=popular_all
   // https://api.indiegogo.com/2/campaigns/recommendations.json?city=San%20Francisco
   // https://api.indiegogo.com/2/campaigns/1918821.json
 
   // ————— DOCUMENTATION —————
   // http://developer.indiegogo.com/docs/search
 
+  public convertResultToProjects(results): Project[] {
+    let list = [];
+    for (let res of results.response) {
+      list.push(new Project({
+        id: res.id,
+        name: res.title,
+        country: res.region,
+        city: res.city,
+        creatorName: res.team_members[0].name,
+        creatorImage: res.team_members[0].avatar_url,
+        usdCollected: res.collected_funds,
+        collected: res.collected_funds,
+        goal: res.goal,
+        currency: res.currency.iso_code,
+        currencySymbol: res.currency.symbol,
+        backers: res.contributions_count,
+        image: res.image_types.original,
+        video: res.main_video_url,
+        url: res.web_url
+      }));
+    }
+    return list;
+  }
+
   private cURL(url: string, body: any, token = '', params = ''): Promise<any> {
+
+    console.log(url, body, token, params);
 
     let method = 'POST';
     if (body === null) {

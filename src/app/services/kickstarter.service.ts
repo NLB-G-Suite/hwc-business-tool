@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { AssetsService } from './assets.service';
 import { Observable } from 'rxjs/Rx';
 import childProcess from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
 import { KickstarterOption } from '../class/kickstarterOption';
+import { Project } from '../class/project';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -17,10 +17,9 @@ export class KickstarterService {
 
   public token: string = '';
   public clientId: string = '2II5GGBZLOOZAA5XBU1U0Y44BU57Q58L8KOGM7H0E0YFHP3KTG';
-  private baseUrl = 'https://api.kickstarter.com';
+  private baseUrl = 'https://api.kickstarter.com/v1/';
 
   constructor (
-    private assetsService: AssetsService,
     private http: Http) {
   }
 
@@ -64,8 +63,33 @@ export class KickstarterService {
    * "search_projects": "https://api.kickstarter.com/v1/projects/search",
    * "self" :"https://api.kickstarter.com/v1/users/self"
   */
+  public convertResultToProjects(results): Project[] {
+    let list = [];
+    for (let res of results.projects) {
+      list.push(new Project({
+        id: res.id,
+        name: res.name,
+        country: res.country,
+        city: res.location.name,
+        creatorName: res.creator.name,
+        creatorImage: res.creator.avatar.medium,
+        usdCollected: Number(res.usd_pledged),
+        collected: res.pledged,
+        goal: res.goal,
+        currency: res.currency,
+        currencySymbol: res.currency_symbol,
+        backers: res.backers_count,
+        image: res.profile.feature_image_attributes.image_urls.default,
+        video: res.video,
+        url: res.urls.project_short
+      }));
+    }
+    return list;
+  }
 
   public cURL(url: string, body: any, token = '', params = ''): Promise<any> {
+
+    console.log(url, body, token, params);
 
     let method = 'POST';
     if (body === null) {

@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRouting } from './app.routes';
-import { AuthGuards } from './guards/guards';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -16,14 +15,11 @@ import { HardwareClubService } from './services/hardwareclub.service';
 import { IndiegogoService } from './services/indiegogo.service';
 import { StorageService } from './services/storage.service';
 
-import { Keyobject } from './pipes/custom';
-
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
-    Keyobject
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +28,6 @@ import { Keyobject } from './pipes/custom';
     AppRouting
   ],
   providers: [
-    Keyobject,
-    AuthGuards,
     KickstarterService,
     StorageService,
     HardwareClubService,

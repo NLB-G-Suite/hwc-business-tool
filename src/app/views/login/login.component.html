@@ -19,7 +19,6 @@
 	<h3>Connected to Kickstarter</h3>
 	<button (click)="logout('kickstarter')">Logout</button>
 </div>
-
 <div *ngIf="!indiegogo.connected">
 	<form (ngSubmit)="indiegogoLogin(indiegogo.email, indiegogo.password)" name="indiegogo">
 
