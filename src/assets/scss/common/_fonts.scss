@@ -1,0 +1,123 @@
+$light: 100;
+$book: 200;
+$medium: 300;
+$semibold: 400;
+$bold: 500;
+
+
+@font-face {
+  font-family: "MarkPro-Black";
+  src: url("../fonts/MarkPro-Black.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro-Black.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro-Black.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro-Black.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro-Black.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro-Black.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro-Black.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MarkPro-Bold";
+  src: url("../fonts/MarkPro-Bold.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro-Bold.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro-Bold.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro-Bold.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro-Bold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro-Bold.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+// @font-face {
+//   font-family: "MarkPro-ExtraLight";
+//   src: url("../fonts/MarkPro-ExtraLight.eot"); /* IE9 Compat Modes */
+//   src: url("../fonts/MarkPro-ExtraLight.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+//     url("../fonts/MarkPro-ExtraLight.otf") format("opentype"), /* Open Type Font */
+//     url("../fonts/MarkPro-ExtraLight.svg") format("svg"), /* Legacy iOS */
+//     url("../fonts/MarkPro-ExtraLight.ttf") format("truetype"), /* Safari, Android, iOS */
+//     url("../fonts/MarkPro-ExtraLight.woff") format("woff"), /* Modern Browsers */
+//     url("../fonts/MarkPro-ExtraLight.woff2") format("woff2"); /* Modern Browsers */
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+@font-face {
+  font-family: "MarkPro-Hairline";
+  src: url("../fonts/MarkPro-Hairline.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro-Hairline.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro-Hairline.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro-Hairline.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro-Hairline.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro-Hairline.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro-Hairline.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MarkPro-Light";
+  src: url("../fonts/MarkPro-Light.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro-Light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro-Light.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro-Light.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro-Light.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro-Light.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro-Light.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MarkPro-Medium";
+  src: url("../fonts/MarkPro-Medium.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro-Medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro-Medium.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro-Medium.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro-Medium.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro-Medium.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro-Medium.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MarkPro-Thin";
+  src: url("../fonts/MarkPro-Thin.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro-Thin.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro-Thin.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro-Thin.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro-Thin.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro-Thin.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro-Thin.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+// @font-face {
+//   font-family: "MarkPro-Book";
+//   src: url("../fonts/MarkPro-Book.eot"); /* IE9 Compat Modes */
+//   src: url("../fonts/MarkPro-Book.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+//     url("../fonts/MarkPro-Book.otf") format("opentype"), /* Open Type Font */
+//     url("../fonts/MarkPro-Book.svg") format("svg"), /* Legacy iOS */
+//     url("../fonts/MarkPro-Book.ttf") format("truetype"), /* Safari, Android, iOS */
+//     url("../fonts/MarkPro-Book.woff") format("woff"), /* Modern Browsers */
+//     url("../fonts/MarkPro-Book.woff2") format("woff2"); /* Modern Browsers */
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+@font-face {
+  font-family: "MarkPro";
+  src: url("../fonts/MarkPro.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/MarkPro.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/MarkPro.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/MarkPro.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/MarkPro.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/MarkPro.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/MarkPro.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}

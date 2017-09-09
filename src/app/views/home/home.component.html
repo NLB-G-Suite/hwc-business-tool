@@ -1,13 +1,94 @@
-<div>
-	hello de la page home
+<header>
+	<div class="top">
+		<div class="logo" (click)="focusResult = false;">Hardware Club</div>
+		<div class="topSearch" *ngIf="focusResult">
+			<div class="searchbar">
+				<form (ngSubmit)="search(keywords, sort)" name="search">
+					<input type="text" name="search" [(ngModel)]="keywords" autofocus>
+					<!-- <input type="radio" name="sort" value="popularity" [(ngModel)]="sort"> Popularity
+					<input type="radio" name="sort" value="most_founded" [(ngModel)]="sort"> Most founded
+					<input type="radio" name="sort" value=" newest" [(ngModel)]="sort"> Newest
+					<input type="radio" name="sort" value="end_date" [(ngModel)]="sort"> End date -->
+					<input value="" type="submit">
+				</form>
+			</div>
+		</div>
+		<div class="categories">
+			<ul *ngIf="focusResult">
+				<li (click)="selectSort('popular')" [class.active]="sort === 'popular'">Popular</li>
+				<li (click)="selectSort('new')" [class.active]="sort === 'new'">Newest</li>
+				<li (click)="selectSort('most_founded')" [class.active]="sort === 'most_founded'">Most Founded</li>
+				<li (click)="selectSort('countdown')" [class.active]="sort === 'countdown'">End Date</li>
+			</ul>
+		</div>
+		<div class="profil"></div>
+		<div class="menu" (click)="menuOpen = !menuOpen"></div>
+	</div>
+	<div class="sources" [class.active]="menuOpen">
+		<ul>
+			<li>
+				<div class="icon kickstarter" [class.active]="kickstarterActive" (click)="kickstarterActive = !kickstarterActive;refreshResearch()"></div>
+				<p>Kickstarter</p>
+			</li>
+			<li>
+				<div class="icon indiegogo" [class.active]="indiegogoActive" (click)="indiegogoActive = !indiegogoActive;refreshResearch()"></div>
+				<p>Indiegogo</p>
+			</li>
+			<!-- <li>
+				<div class="icon hardwareclub"></div>
+				<p>Hardwareclub</p>
+			</li> -->
+		</ul>
+	</div>
+</header>
+<section class="landing_search" [class.focus-result]="focusResult">
+	<div class="main_search">
+		<h1>Business Tool</h1>
+		<div class="searchbar">
+			<form (ngSubmit)="search(keywords, sort)" name="search">
+				<input type="text" name="search" [(ngModel)]="keywords" autofocus>
+				<!-- <input type="radio" name="sort" value="popularity" [(ngModel)]="sort"> Popularity
+				<input type="radio" name="sort" value="most_founded" [(ngModel)]="sort"> Most founded
+				<input type="radio" name="sort" value=" newest" [(ngModel)]="sort"> Newest
+				<input type="radio" name="sort" value="end_date" [(ngModel)]="sort"> End date -->
+				<input value="" type="submit">
+			</form>
+		</div>
+	</div>
+	<footer>
+		<div class="left"></div>
+		<div class="center"></div>
+		<div class="rigth"></div>
+	</footer>
+</section>
 
-	<form (ngSubmit)="search(keywords, sort)" name="search">
-		<input type="text" name="search" placeholder="Keywords ..." [(ngModel)]="keywords">
-		<h3>Filters</h3>
-		<input type="radio" name="sort" value="popularity" [(ngModel)]="sort"> Popularity
-		<input type="radio" name="sort" value="most_founded" [(ngModel)]="sort"> Most founded
-		<input type="radio" name="sort" value=" newest" [(ngModel)]="sort"> Newest
-		<input type="radio" name="sort" value="end_date" [(ngModel)]="sort"> End date
-		<input value="Search" type="submit">
-	</form>
-</div>
+<section class="results-page" [class.focus-result]="focusResult">
+	<div class="filters"></div>
+	<div class="results">
+		<ul class="cards">
+			<!--  (click)="selectProject(project)" -->
+			<li class="card" *ngFor="let project of allResults">
+				<span class="country">{{project.country}}</span>
+				<div class="header">
+					<div [className]="'image ' + project.origin" [style.backgroundImage]="'url(' + project.image + ')'"></div>
+					<div class="title" (click)="projectService.saveProject(project)">{{project.name}}</div>
+				</div>
+				<ul class="datas">
+					<li>
+						<span class="number">{{project.collected}}{{project.currencySymbol}}</span>
+						<span class="legend">({{project.currency}}) collected</span>
+					</li>
+					<li>
+						<span class="number">{{project.goal}}{{project.currencySymbol}}</span>
+						<span class="legend">goal</span>
+					</li>
+					<li>
+						<span class="number">{{project.backers}}</span>
+						<span class="legend">{{project.notes}}</span>
+						<!-- <span class="legend">Backers</span> -->
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</section>

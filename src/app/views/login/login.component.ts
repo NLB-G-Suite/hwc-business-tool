@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 import { KickstarterService } from '../../services/kickstarter.service';
 import { HardwareClubService } from '../../services/hardwareclub.service';
@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
     public hardwareclubService: HardwareClubService,
     public indiegogoService: IndiegogoService,
     private storageService: StorageService,
-    public router: Router) {
+    // public router: Router
+    ) {
     this.loadCredential();
   }
 
@@ -131,7 +132,7 @@ export class LoginComponent implements OnInit {
    */
   public checkLogin(): boolean {
     if (this.kickstarter.connected && this.indiegogo.connected && this.hardwareclub.connected) {
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
       return true;
     }
     return false;
@@ -152,36 +153,38 @@ export class LoginComponent implements OnInit {
   private loadCredential(): void {
     let credentials = this.storageService.get('credentials');
 
-    // Kickstarter
-    if (credentials.kickstarter !== undefined) {
-      this.kickstarter.email = credentials.kickstarter.email;
-      this.kickstarter.password = credentials.kickstarter.password;
+    if (credentials !== null) {
+      // Kickstarter
+      if (credentials.kickstarter !== undefined) {
+        this.kickstarter.email = credentials.kickstarter.email;
+        this.kickstarter.password = credentials.kickstarter.password;
 
-      // Auto Connect
-      if (credentials.kickstarter.autoconnect) {
-        this.kickstarterLogin(this.kickstarter.email, this.kickstarter.password);
+        // Auto Connect
+        if (credentials.kickstarter.autoconnect) {
+          this.kickstarterLogin(this.kickstarter.email, this.kickstarter.password);
+        }
       }
-    }
 
-    // Indiegogo
-    if (credentials.indiegogo !== undefined) {
-      this.indiegogo.email = credentials.indiegogo.email;
-      this.indiegogo.password = credentials.indiegogo.password;
+      // Indiegogo
+      if (credentials.indiegogo !== undefined) {
+        this.indiegogo.email = credentials.indiegogo.email;
+        this.indiegogo.password = credentials.indiegogo.password;
 
-      // Auto Connect
-      if (credentials.indiegogo.autoconnect) {
-        this.indiegogoLogin(this.indiegogo.email, this.indiegogo.password);
+        // Auto Connect
+        if (credentials.indiegogo.autoconnect) {
+          this.indiegogoLogin(this.indiegogo.email, this.indiegogo.password);
+        }
       }
-    }
 
-    // HardwareClub
-    if (credentials.hardwareclub !== undefined) {
-      this.hardwareclub.email = credentials.hardwareclub.email;
-      this.hardwareclub.password = credentials.hardwareclub.password;
+      // HardwareClub
+      if (credentials.hardwareclub !== undefined) {
+        this.hardwareclub.email = credentials.hardwareclub.email;
+        this.hardwareclub.password = credentials.hardwareclub.password;
 
-      // Auto Connect
-      if (credentials.hardwareclub.autoconnect) {
-        this.hardwareclubLogin(this.hardwareclub.email, this.hardwareclub.password);
+        // Auto Connect
+        if (credentials.hardwareclub.autoconnect) {
+          this.hardwareclubLogin(this.hardwareclub.email, this.hardwareclub.password);
+        }
       }
     }
   }

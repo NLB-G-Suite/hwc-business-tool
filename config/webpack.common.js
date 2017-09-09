@@ -191,8 +191,8 @@ const ngcWebpack = require('ngc-webpack');
         /* File loader for supporting fonts, for example, in CSS files.
         */
         { 
-          test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
-          use: 'file-loader'
+          test   : /\.(otf|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+          loader : 'file-loader'
         }
 
         ],

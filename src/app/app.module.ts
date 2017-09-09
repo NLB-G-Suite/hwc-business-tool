@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { AppRouting } from './app.routes';
+// import { AppRouting } from './app.routes';
+import { SafePipe } from './pipes/safePipe';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -19,13 +20,13 @@ import { StorageService } from './services/storage.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    AppRouting
+    HttpModule
   ],
   providers: [
     KickstarterService,

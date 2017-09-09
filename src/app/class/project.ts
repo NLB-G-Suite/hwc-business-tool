@@ -1,5 +1,5 @@
 export class Project {
-  public id: number;
+  public identifiant: number;
   public name: string;
   public country: string;
   public city: string;
@@ -19,9 +19,16 @@ export class Project {
 
   public url: string;
 
+  public origin: string;
+
+  public pined: boolean;
+  public notes: boolean;
+
+  public googleSave: any;
+
   constructor(options) {
 
-    this.id = options.id;
+    this.identifiant = options.identifiant;
     this.name = options.name;
     this.country = options.country;
     this.city = options.city;
@@ -40,5 +47,12 @@ export class Project {
     this.video = options.video;
 
     this.url = options.url;
+
+    this.origin = options.origin;
+
+    this.pined = options.pined === 'VRAI' ? true : false;
+    this.notes = options.notes ? options.notes : '';
+
+    this.googleSave = options.googleSave ? options.googleSave : null;
   }
 }

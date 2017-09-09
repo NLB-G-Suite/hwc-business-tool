@@ -5,12 +5,11 @@ import AppUpdater from './AppUpdater';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss', '../assets/scss/main.scss']
 })
 export class AppComponent {
-  // Set our default values
-  public notif = {update: false};
   public appUpdater;
+  public notif = {update: false};
 
   constructor() {
     this.appUpdater = new AppUpdater();
@@ -19,12 +18,10 @@ export class AppComponent {
     }, 5000);
   }
 
-  public openUpdate(): void {
-    this.updateSoftware();
+  ngOnInit() {
   }
 
-  public updateSoftware(): void {
-    console.log(this.appUpdater, this.appUpdater.autoUpdater);
+  public updateSoftware() {
     this.appUpdater.autoUpdater.downloadUpdate();
   }
 }

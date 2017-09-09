@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<div class="update-notification" *ngIf="appUpdater != undefined && appUpdater.updateAvailable">
+  <button (click)="updateSoftware()">Update Software</button>
+</div>
+<home></home>

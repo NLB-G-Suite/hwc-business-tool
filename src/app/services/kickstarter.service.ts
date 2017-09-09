@@ -64,10 +64,11 @@ export class KickstarterService {
    * "self" :"https://api.kickstarter.com/v1/users/self"
   */
   public convertResultToProjects(results): Project[] {
+    console.log(results);
     let list = [];
     for (let res of results.projects) {
       list.push(new Project({
-        id: res.id,
+        identifiant: res.id,
         name: res.name,
         country: res.country,
         city: res.location.name,
@@ -80,16 +81,15 @@ export class KickstarterService {
         currencySymbol: res.currency_symbol,
         backers: res.backers_count,
         image: res.profile.feature_image_attributes.image_urls.default,
-        video: res.video,
-        url: res.urls.project_short
+        video: res.video.high,
+        url: res.urls.web.project,
+        origin: 'kickstarter'
       }));
     }
     return list;
   }
 
   public cURL(url: string, body: any, token = '', params = ''): Promise<any> {
-
-    console.log(url, body, token, params);
 
     let method = 'POST';
     if (body === null) {

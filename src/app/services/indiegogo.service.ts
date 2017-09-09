@@ -78,7 +78,7 @@ export class IndiegogoService {
     let list = [];
     for (let res of results.response) {
       list.push(new Project({
-        id: res.id,
+        identifiant: res.id,
         name: res.title,
         country: res.region,
         city: res.city,
@@ -92,7 +92,8 @@ export class IndiegogoService {
         backers: res.contributions_count,
         image: res.image_types.original,
         video: res.main_video_url,
-        url: res.web_url
+        url: res.web_url,
+        origin: 'indiegogo'
       }));
     }
     return list;
