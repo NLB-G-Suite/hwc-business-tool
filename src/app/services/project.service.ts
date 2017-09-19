@@ -27,7 +27,7 @@ export class ProjectService {
   }
 
   //  ————— PROJECT HELPER —————
-  public loadProjects(): Promise {
+  public loadProjects(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.google.readRows(this.sheet).then((rows) => {
         if (rows) {
@@ -38,7 +38,7 @@ export class ProjectService {
       });
     });
   }
-  public loadProject(project: Project): Promise {
+  public loadProject(project: Project): Promise<any> {
     return new Promise((resolve, reject) => {
       this.google.readRows(this.sheet, {
         limit: 1,
@@ -55,7 +55,7 @@ export class ProjectService {
       });
     });
   }
-  public saveProject(project: Project): Promise {
+  public saveProject(project: Project): Promise<any> {
     return new Promise((resolve, reject) => {
       // Check if exist
       this.loadProject(project).then((p) => {

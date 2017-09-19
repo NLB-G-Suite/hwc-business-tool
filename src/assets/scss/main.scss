@@ -5,16 +5,64 @@
 
 .update-notification {
 	position: absolute;
-	top:0;
-	left:0;
-	padding: 20px;
+	bottom:35px;
+	right: -500px;
+	padding: 24px 36px 26px 36px;
+	border-radius: 8px;
+	z-index: 999999999;
+	background-color: $dark;
+	font-family: 'MarkPro-Light';
+	font-size: 16px;
+	letter-spacing: -0.7px;
+	color:white;
+	transition: right 1.5s;
+	&.active {
+		animation-name: appearNotif;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    right: 80px;
+	}
+	.logo {
+		background: url('../../assets/images/icon_sonder.png');
+		background-size: cover;
+		background-position: center;
+		width: 57px;
+		height: 34px;
+		display: inline-block;
+	}
+	.message {
+		display: inline-block;
+		padding: 0 28px;
+		p{
+			margin: 0;
+		}
+		span {
+			opacity: 0.75;
+		}
+	}
 	button {
-		background-color:red;
-		color:white;
+		float: right;
+		display: inline-block;
+		background-color:$blue;
 		outline:none;
+		padding: 8px 37px 10px 38px;
+		margin: 0;
+		border: none;
+		border-radius: 8px;
+		&:active {
+			opacity: 0.8;
+		}
 	}
 }
 
+@keyframes appearNotif {
+    0% {right: -500px}
+    100% {right: 80px}
+}
+
+
 home {
 	font-family: 'MarkPro';
+	letter-spacing: -0.7px;
 }

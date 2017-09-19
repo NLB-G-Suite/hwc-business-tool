@@ -17,8 +17,111 @@
   <% } %>
 </head>
 <body>
+  <style type="text/css">
+    @font-face {
+    font-family: "MarkPro-Medium";
+      src: url("assets/fonts/MarkPro-Medium.eot"); /* IE9 Compat Modes */
+      src: url("assets/fonts/MarkPro-Medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+        url("assets/fonts/MarkPro-Medium.otf") format("opentype"), /* Open Type Font */
+        url("assets/fonts/MarkPro-Medium.svg") format("svg"), /* Legacy iOS */
+        url("assets/fonts/MarkPro-Medium.ttf") format("truetype"), /* Safari, Android, iOS */
+        url("assets/fonts/MarkPro-Medium.woff") format("woff"), /* Modern Browsers */
+        url("assets/fonts/MarkPro-Medium.woff2") format("woff2"); /* Modern Browsers */
+      font-weight: normal;
+      font-style: normal;
+    }
+    .loading{
+      position: absolute;
+      height: 300px;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 50%;
+      min-width: 350px;
+    }
+    .loading .logo {
+      height: 92px;
+      width: 155px;
+      margin: auto;
+      display: block;
+      background: url('assets/images/icon_sonder.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .loading .instructions {
+      height: 60px;
+      width: 100%;
+      display: block;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .loading .instructions ul {
+      margin: 0;
+      padding: 0;
+      height: 60px;
+      width: 100%;
+      display: block;
+      animation-name: loading;
+      animation-duration: 15s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 5;
+    }
+
+    .loading .instructions li {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'MarkPro-Medium';
+      letter-spacing: -0.7px;
+    }
+
+    .loading .instructions:before {
+      content: '';
+      height: 60px;
+      width: 100%;
+      display: block;
+      background: linear-gradient(white, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7), white);
+      position: absolute;
+    }
+
+    @keyframes loading {
+        0% {margin-top: 20px}
+        10% {margin-top: 0px}
+        20% {margin-top: -20px}
+        30% {margin-top: -40px}
+        40% {margin-top: -60px}
+        50% {margin-top: -80px}
+        60% {margin-top: -100px}
+        70% {margin-top: -120px}
+        80% {margin-top: -140px}
+        90% {margin-top: -160px}
+        100% {margin-top: -180px}
+    }
+  </style>
   <!-- <script src="https://apis.google.com/js/api.js"></script> -->
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div class="loading">
+      <div class="logo"></div>
+      <div class="instructions">
+        <ul>
+          <li>Preparing the layout</li>
+          <li>Processing your request</li>
+          <li>Fetching all datas</li>
+          <li>Check for updates</li>
+          <li>Draw Logo</li>
+          <li>Resolve issues</li>
+          <li>Waiting for the program to start</li>
+          <li>Check why the program is so long to start</li>
+          <li>Fond issues!</li>
+          <li>Cancel launching</li>
+        </ul>
+      </div>
+    </div>
+  </app-root>
 
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->

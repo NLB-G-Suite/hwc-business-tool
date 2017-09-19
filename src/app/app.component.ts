@@ -10,18 +10,18 @@ import AppUpdater from './AppUpdater';
 export class AppComponent {
   public appUpdater;
   public notif = {update: false};
+  public notifActive = false;
 
   constructor() {
     this.appUpdater = new AppUpdater();
     setTimeout(() => {
+      this.notifActive = true;
       this.notif.update = this.appUpdater.updateAvailable;
     }, 5000);
   }
 
-  ngOnInit() {
-  }
-
   public updateSoftware() {
+    this.notifActive = false;
     this.appUpdater.autoUpdater.downloadUpdate();
   }
 }
