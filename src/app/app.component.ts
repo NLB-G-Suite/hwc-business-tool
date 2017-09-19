@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+
+import { SearchComponent } from './views/search/search.component';
 
 import AppUpdater from './AppUpdater';
 
@@ -7,10 +9,18 @@ import AppUpdater from './AppUpdater';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss', '../assets/scss/main.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+
+  @ViewChild(SearchComponent) search: SearchComponent;
   public appUpdater;
   public notif = {update: false};
   public notifActive = false;
+
+  public data = {
+    page: 'home',
+    keywords: '',
+    sort: ''
+  };
 
   constructor() {
     this.appUpdater = new AppUpdater();
@@ -18,6 +28,11 @@ export class AppComponent {
       this.notifActive = true;
       this.notif.update = this.appUpdater.updateAvailable;
     }, 5000);
+
+  }
+
+  ngAfterViewInit() {
+    console.log(this.search);
   }
 
   public updateSoftware() {

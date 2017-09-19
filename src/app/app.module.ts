@@ -10,6 +10,7 @@ import { SafePipe } from './pipes/safePipe';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
+import { SearchComponent } from './views/search/search.component';
 
 import { KickstarterService } from './services/kickstarter.service';
 import { HardwareClubService } from './services/hardwareclub.service';
@@ -21,6 +22,7 @@ import { StorageService } from './services/storage.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
+    SearchComponent,
     SafePipe
   ],
   imports: [

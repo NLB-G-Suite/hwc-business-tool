@@ -101,7 +101,7 @@ export class IndiegogoService {
 
   private cURL(url: string, body: any, token = '', params = ''): Promise<any> {
 
-    console.log(url, body, token, params);
+    // console.log(url, body, token, params);
 
     let method = 'POST';
     if (body === null) {
@@ -125,6 +125,9 @@ export class IndiegogoService {
       childProcess.exec('curl ' + args, (err, stdout, stderr) => {
         if (err) {
           reject(err);
+        }
+        if (JSON.parse(stdout).error !== undefined) {
+          reject(JSON.parse(stdout));
         }
         resolve(JSON.parse(stdout));
       });

@@ -1,325 +1,342 @@
 header {
-	color:white;
-	height: 30px;
-	display: block;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 10;
-	user-select: none;
-	// background-color: rgba(19, 26, 56, 0.95);
-	.top {
-		padding: 10px;
-		height: 30px;
-		z-index: 2;
-		position: fixed;
-		background-color: #1f2543;
-		width: calc(100% - 20px);
-		.logo {
-			display: inline-block;
-			float:left;
-			width: 130px;
-			font-size: 16px;
-			padding: 8px;
-		}
-		.topSearch {
-			display: inline-block;
-			width: 200px;
-			float: left;
-			.searchbar {
-				form {
-					input[type="text"] {
-						//
-					}
-					input[type="submit"] {
-						//
-					}
-				}
-			}
-		}
-		.categories {
-			display: inline-block;
-			float: left;
-			ul {
-				margin: 5px 2px;
-				padding: 0;
-				li {
-					padding: 3px 10px;
-					display: inline-block;
-					font-size: 12px;
-					max-width: 80px;
-					text-align: center;
-					cursor: pointer;
-					&.active {
-						border-bottom: 1px solid white;
-					}
-				}
-			}
-		}
-		.profil {
-			//
-		}
-		.menu {
-			cursor: pointer;
-			background: url('../../assets/images/icon_menu.png');
-			height: 14px;
-			width: 14px;
-			margin: 10px;
-			display: inline-block;
-			float: right;
-			background-size: contain;
-			background-position: center;
-			background-repeat: no-repeat;
-		}
-	}
-	.sources {
-		height: 50px;
-		width: calc(100%);
+	margin: 46px 84px;
+
+	.logo {
 		display: block;
-		z-index: 1;
-		position: absolute;
-		background-color: #1f2543;
-		transition: top 0.5s;
-		top:-30px;
-		&.active {
-			top: 50px;
-		}
-		ul {
-			text-align: center;
-			margin: 0;
-			padding: 0;
-			li {
-				display: inline-block;
-				text-align: center;
-				width: 60px;
-				cursor: pointer;
-				transition: transform 0.3s;
-				&:hover {
-					transform: scale(0.96);
-				}
-				&:active {
-					transform: scale(0.90);
-				}
-				.icon {
-					height: 24px;
-					width: 24px;
-					border-radius: 100px;
-					background-color:white;
-					display: block;
-					margin: auto;
-					background-size: cover;
-					background-position: center;
-					background-repeat: no-repeat;
-					&.kickstarter {
-						background-image: url('../../assets/images/kickstarter_logo.png');
-					}
-					&.indiegogo {
-						background-image: url('../../assets/images/indiegogo_logo.jpg');
-					}
-					&.hardwareclub {
-						background-image: url('../../assets/images/hardwareclub_logo.png');
-					}
-				}
-				p {
-					font-weight: 100;
-					font-size: 8px;
-					display: block;
-					margin-top: 3px;
-					margin-bottom: 0;
-					font-weight: 100;
-				}
+		height: 42px;
+		width: 128px;
+		background: url('../../assets/images/signature.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		float: left;
+	}
+	.description {
+		display: block;
+		width: 380px;
+		float:left;
+		float:right;
+		color: black;
+		opacity: 0.5;
+		font-size: 15;
+		font-family: 'MarkPro-Hairline';
+	}
+}
+
+section.main_search {
+	position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100vw;
+  min-width: 350px;
+	h1 {
+		text-align: center;
+		padding-bottom: 35px;
+		margin: 0;
+	}
+	.stripes {
+		background: url('../../assets/images/stripes.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 186px;
+		width: 100vw;
+		position: relative;
+		form {
+			width: 763px;
+			display: block;
+			background: white;
+			position: absolute;
+		  display: block;
+		  top: 50%;
+		  left: 50%;
+		  transform: translateX(-50%) translateY(-50%);
+		  box-shadow: 0 2px 7px rgba(black, 0.1);
+		  padding: 20px 31px;
+			input[type="submit"] {
+				background: none;
+				border: none;
+				outline: none;
+				background: url('../../assets/images/icon_search_black.png');
+				height: 31px;
+				width: 31px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 23px;
+				float: left;
+			}
+			input[type="text"] {
+				border: none;
+				outline: none;
+				padding: 0 18px;
+				font-size: 22px;
+				margin-left: 60px;
+				height: 31px;
+				width: calc(99% - 93px);
+				display: block;
+				border-left: 1px solid black;
 			}
 		}
 	}
 }
 
-.searchbar {
-	border-bottom: 1px solid white;
-	width: 100%;
-	form {
-		input[type='text'] {
-			background: none;
-			color:white;
-			border: none;
-			outline: none;
-			padding: 5px 0;
-			width: calc(100% - 23px);
+.modules {
+	ul {
+		li {
+			//
 		}
-		input[type='submit'] {
-			border: none;
-			outline: none;
-			background: none;
-			background-image: url('../../assets/images/icon_search.png');
+	}
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100vw;
+	ul.services {
+		padding: 0;
+		li.icon {
+			height: 49px;
+			width: 49px;
+			border-radius: 100px;
+			border: 3px solid white;
+			background-color: black;
+			position: relative;
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+      display: inline-block;
+      margin: 13px;
+      cursor: pointer;
+      opacity: 0.5;
+      background-color:white;
+      &:hover {
+      	opacity: 0.8;
+      }
+			&:before {
+				content: '';
+				height: 59px;
+				width: 59px;
+				background-color: $light_grey;
+				border-radius: 100px;
+				position: absolute;
+				z-index: -1;
+				top: -5px;
+				left: -5px;
+				opacity: 0.5;
+				transition: background-color 0.3s;
+			}
+			// &:after {
+			// 	content: '';
+			// 	height: 49px;
+			// 	width: 49px;
+			// 	position: absolute;
+			// 	z-index: 1;
+			// 	border-radius: 100px;
+			// 	display: block;
+			// 	top: 0;
+			// }
+			&.kickstarter {
+				background-image: url('../../assets/images/kickstarter_logo.png');
+			}
+			&.indiegogo {
+				background-image: url('../../assets/images/indiegogo_logo.jpg');
+			}
+			&.hardwareclub {
+				background-image: url('../../assets/images/hardwareclub_logo.png');
+			}
+			&.active {
+				opacity: 1;
+				&:before {
+					background-color: green;
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.connected {
+		color: $green;
+	}
+}
+
+.login {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+	right: -100vw;
+	transition: right 0s;
+	transition-delay: 0.5s;
+	&.open {
+		right: 0;
+		transition-delay: 0s;
+		section {
+			right: 0;
+			transition: right 0.5s;
+		}
+		.grey_zone {
+			opacity: 0.52;
+			transition: opacity 0.5s;
+		}
+	}
+	.grey_zone {
+		width: 100vw;
+		background-color: black;
+		opacity: 0;
+		height: 100vh;
+		cursor: pointer;
+		transition: opacity 0.5s;
+	}
+	section {
+		width: calc(772px - 166px);
+		background: white;
+		height: calc(100vh - 92px);
+		position: absolute;
+		right: -772px;
+		top: 0;
+		padding: 46px 83px;
+		transition: right 0.5s;
+		.close {
+			float: right;
+			border: 2px;
+			opacity: 0.5;
+			cursor: pointer;
+			border-radius: 100px;
+			height: 24px;
+			width: 24px;
+			background-image: url('../../assets/images/icon_close.png');
+			background-size: 7px;
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: contain;
-			height: 14px;
-			width: 18px;
-			padding: 0;
+			background-color: white;
+			outline: none;
+			position: relative;
+			border: 1px solid black;
+			transition: opacity 0.3s;
+			&:before {
+				content:"Close panel";
+				opacity: 0.5;
+				left: -114px;
+				top: 2px;
+				width: 100px;
+				display: block;
+				position: absolute;
+			}
+			&:active {
+				opacity: 0.3;
+			}
 		}
-	}
-}
-
-section.landing_search {
-	background-color: $blue;
-	height: calc(100vh - 50px);
-	margin-top: 50px;
-	width: 100vw;
-	display: block;
-	color:white;
-	position: absolute;
-	background-repeat: no-repeat;
-	position: relative;
-	left: 0;
-	transition: left 0.5s;
-	&:after {
-		content: "";
-	  background: url('../../assets/images/hwc_white.png');
-	  opacity: 0.1;
-	  top: 0;
-	  left: 0;
-	  bottom: 0;
-	  right: 0;
-	  position: absolute;
-	  background-position-x: -6%;
-		background-position-y: 109%;
-		background-repeat: no-repeat;
-	}
-	&.focus-result, &.focus-item { left: -100vw; }
-	.main_search {
-		position: absolute;
-		z-index: 2;
-		top: 50%;
-		left: 50%;
-		transform: translateX(-50%) translateY(-50%);
-		width: 50%;
-		min-width: 350px;
-		h1 {
-			user-select: none;
-			text-align: center;
-		}
-	}
-	footer {
-		.left {
-			//
-		}
-		.center {
-			//
-		}
-		.rigth {
-			//
-		}
-	}
-}
-
-section.results-page {
-	background-color: #fafafa;
-	position: absolute;
-	width: calc(100vw - 30px);
-	left: 100vw;
-	top: 50px;
-	transition: left 0.5s;
-	padding: 15px;
-	&.focus-result {
-		left: 0px;
-	}
-	&.focus-item {
-		left: -100vw;
-	}
-	.filters {
-		//
-	}
-	.results {
-		width: 100%;
-		ul.cards {
-			padding: 0;
-			margin: 0;
-			text-align: center;
-			li.card {
-				user-select: none;
-				display: inline-block;
-				background-color:white;
-				border-radius: 5px;
+		.content {
+			margin-top: 40px;
+			.logo {
+				border: 2px solid $blue;
+				border-radius: 100%;
+				margin: auto;
+				height: 55px;
+				width: 55px;
+				display: block;
+			}
+			.icon {
+				height: 49px;
+				width: 49px;
+				border-radius: 100px;
+				border: 3px solid white;
+				background-color: black;
 				position: relative;
-				// width: calc(100/3% - 128px);
-				margin: 2px;
-				border: 1px solid #f2f2f2;
-				padding: 30px 20px 5px 20px;
-				cursor: pointer;
-				&:hover {
-					border-color: rgba(19, 26, 56, 0.1);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+	      display: inline-block;
+	      margin: 13px;
+	      cursor: pointer;
+	      opacity: 1;
+	      background-color:white;
+	      margin: auto;
+				&.kickstarter {
+					background-image: url('../../assets/images/kickstarter_logo.png');
 				}
-				&:active {
-					border-color: $blue;
+				&.indiegogo {
+					background-image: url('../../assets/images/indiegogo_logo.jpg');
 				}
-				span.country {
-					color: black;
-					opacity: 0.5;
-					font-size: 12px;
-					position: absolute;
-					top: 15px;
-					right: 10px;
+				&.hardwareclub {
+					background-image: url('../../assets/images/hardwareclub_logo.png');
 				}
-				.header {
+			}
+			h2 {
+				text-align: center;
+			}
+			p {
+				text-align: center;
+				width: 100%;
+				display: block;
+				font-size: 16px;
+				margin-bottom: 32px;
+			}
+			form {
+				label {
+					text-transform: uppercase;
+					font-size: 11px;
 					display: block;
-					height: 80px;
-					margin-bottom: 5px;
-					.image {
-						height: 80px;
-						width: 80px;
-						border-radius: 5px;
-						background-color: $blue;
-						float: left;
-						margin-right: 15px;
-						background-repeat: no-repeat;
-						background-position: center;
-						background-size: cover;
-						&.indiegogo { border: 2px solid #ff0070 }
-						&.kickstarter { border: 2px solid #00e269 }
-					}
-					.title {
-						height: 80px;
-						text-align: left;
-						font-size: 22px;
-						width: 340px;
+					margin-bottom: 11px;
+				}
+				input[type="email"], input[type="password"] {
+					display: block;
+					border: 1px solid $light_grey;
+					padding: 12px 22px 16px 22px;
+					border-radius: 3px;
+					width: calc(100% - 44px);
+					margin-bottom: 28px;
+					outline: none;
+					transition: border 0.3s;
+					&:focus {
+						border-color: $blue;
 					}
 				}
-				ul.datas {
-					text-align: center;
-					width: 100%;
-					padding: 15px 0;
-					li {
-						display: inline-block;
-						width: 30%;
-						.number {
-							display: block;
-							font-size: 16px;
-							text-align: left;
-						}
-						.legend {
-							display: block;
-							opacity: 0.5;
+				.remember {
+					background: $light_grey;
+					border-radius: 1px;
+					padding: 11px 15px;
+					input[type="checkbox"]{
+						position: relative;
+						&:after {
+							content:"Remember me next time";
+							position: absolute;
+							left: 40px;
+							top: 0px;
 							font-size: 12px;
-							text-align: left;
+							width: 200px;
 						}
 					}
+				}
+				input[type="submit"] {
+					background-color: $blue;
+					border-radius: 3px;
+					padding: 15px 0;
+					width: 265px;
+					margin: auto;
+					display: block;
+					color:white;
+					border: none;
+					outline: none;
+					margin-top: 40px;
+					&.load {
+						background: white;
+						&:after {
+							content:"please wait";
+							color: black;
+						}
+					}
+				}
+				.error {
+					color: $red;
+				}
+				.wait {
+					margin-top: 60px;
 				}
 			}
 		}
-	}
-}
-.embed {
-	position: absolute;
-	width: calc(100vw);
-	height: calc(100vh - 50px);
-	left: 100vw;
-	top: 50px;
-	transition: left 0.5s;
-	&.focus-item {
-		left: 0vw;
-	}
-	iframe {
-		height: calc(100vh - 50px);
-		width: 100%;
 	}
 }

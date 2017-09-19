@@ -52,6 +52,9 @@ export class HardwareClubService {
         if (err) {
           reject(err);
         }
+        if (JSON.parse(stdout).error !== undefined) {
+          reject(JSON.parse(stdout));
+        }
         resolve(JSON.parse(stdout));
       });
     });

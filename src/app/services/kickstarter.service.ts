@@ -110,6 +110,9 @@ export class KickstarterService {
         if (err) {
           reject(err);
         }
+        if (JSON.parse(stdout).error_messages !== undefined) {
+          reject(JSON.parse(stdout));
+        }
         resolve(JSON.parse(stdout));
       });
     });
