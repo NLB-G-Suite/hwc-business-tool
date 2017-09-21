@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { SearchComponent } from './views/search/search.component';
+import { NavigationComponent } from './views/navigation/navigation.component';
+import { VigilanteComponent } from './views/vigilante/vigilante.component';
 
 import { KickstarterService } from './services/kickstarter.service';
 import { HardwareClubService } from './services/hardwareclub.service';
@@ -23,6 +25,8 @@ import { StorageService } from './services/storage.service';
     HomeComponent,
     LoginComponent,
     SearchComponent,
+    NavigationComponent,
+    VigilanteComponent,
     SafePipe
   ],
   imports: [

@@ -1,0 +1,14 @@
+<section class="navigation">
+  <ul class="menu">
+    <li class="signature" (click)="selectPage('search')"></li>
+    <li class="search">
+      <form (ngSubmit)="search(keywords, sort)" name="searchbar">
+        <input value="" type="submit">
+        <input type="text" name="search" [(ngModel)]="keywords" placeholder="Search for something...">
+      </form>
+    </li>
+    <li class="nav"[class.active]="data != undefined && data.page === 'search'" (click)="selectPage('search')">Search</li>
+    <li class="nav" [class.active]="data != undefined && data.page === 'vigilante'" (click)="selectPage('vigilante')">Vigilante's Feed</li>
+    <li class="options"></li>
+  </ul>
+</section>

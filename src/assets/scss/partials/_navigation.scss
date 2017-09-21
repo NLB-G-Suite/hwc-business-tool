@@ -1,0 +1,70 @@
+.navigation {
+  position: absolute;
+  width: 100vw;
+  height: 74px;
+  top: 0;
+  z-index: 1;
+  background: white;
+  font-family: 'MarkPro';
+  ul.menu {
+    margin: 0;
+    padding: 0 82px;
+    height: 100%;
+    display: block;
+    li {
+      display: inline-block;
+      float: left;
+      height: calc(100% - 5px);
+      font-size: 17px;
+      user-select: none;
+      &.signature {
+        height: 34px;
+        width: 104px;
+        margin-top: 20px;
+        background: url('../../assets/images/signature.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      &.search {
+        margin: 25px 50px;
+        background: none;
+        form {
+          background: none;
+          position: relative;
+          input {
+            background: none;
+            border: none;
+            outline: none;
+          }
+          input[type="submit"] {
+            height: 18px;
+            width: 18px;
+            display: inline-block;
+            opacity: 0.25;
+            background: url('../../assets/images/icon_search_black.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+          }
+          input[type="text"] {
+            margin-left: 25px;
+            user-select: all;
+          }
+        }
+      }
+      &.nav {
+        padding-top: 26px;
+        margin: 0 25px;
+        cursor: pointer;
+        height: calc(100% - 31px);
+      }
+      &.options {
+        float: right;
+      }
+      &.active {
+        border-bottom: 5px solid $blue;
+      }
+    }
+  }
+}

@@ -24,6 +24,8 @@ export class Project {
   public pined: boolean;
   public notes: boolean;
 
+  public seen: boolean;
+
   public googleSave: any;
 
   constructor(options) {
@@ -49,6 +51,7 @@ export class Project {
     this.url = options.url;
 
     this.origin = options.origin;
+    this.seen = options.seen;
 
     this.pined = options.pined === 'VRAI' ? true : false;
     this.notes = options.notes ? options.notes : '';

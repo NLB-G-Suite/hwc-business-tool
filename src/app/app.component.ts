@@ -1,6 +1,8 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
 import { SearchComponent } from './views/search/search.component';
+import { HomeComponent } from './views/home/home.component';
+import { NavigationComponent } from './views/navigation/navigation.component';
 
 import AppUpdater from './AppUpdater';
 
@@ -11,7 +13,9 @@ import AppUpdater from './AppUpdater';
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild(SearchComponent) search: SearchComponent;
+  @ViewChild(HomeComponent) home: HomeComponent;
+  @ViewChild(NavigationComponent) navigation: NavigationComponent;
+
   public appUpdater;
   public notif = {update: false};
   public notifActive = false;
@@ -19,7 +23,8 @@ export class AppComponent implements AfterViewInit {
   public data = {
     page: 'home',
     keywords: '',
-    sort: ''
+    sort: 'popularity',
+    allResults: []
   };
 
   constructor() {
@@ -31,12 +36,17 @@ export class AppComponent implements AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
-    console.log(this.search);
+  public searchFunction(data) {
+    console.log(data);
+    this.navigation.search(data.keywords, data.sort);
   }
 
   public updateSoftware() {
     this.notifActive = false;
     this.appUpdater.autoUpdater.downloadUpdate();
   }
+
+  ngAfterViewInit() {
+  }
+
 }

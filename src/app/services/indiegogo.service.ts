@@ -60,7 +60,7 @@ export class IndiegogoService {
     if (option.country !== undefined) { params += '&country=CTRY_' + option.country; }
     // open | ended | successful
     if (option.status !== undefined) { params += '&status=' + option.status; }
-    return this.cURL(this.baseUrl + '/search/campaigns.json', null, this.token, params);
+    return this.cURL(this.baseUrl + '/search/campaigns.json', null, option.token, params);
   }
 
   // ————— SEARCH —————
@@ -113,13 +113,15 @@ export class IndiegogoService {
 
     const args = [
       '-X ' + method,
-      url,
+      "'" + url + params + "'",
       "-H 'cache-control: no-cache'",
       "-H 'content-type: application/json'",
       "-H 'Authorization: Bearer " + token + "'",
       "-H 'X-Api-Token: e88bd0a00305bfdfb18003a75665643b'",
       "-d '" + JSON.stringify(body) + "'"
-    ].join(' ');
+    ].join(" ");
+
+    console.log(args);
 
     let promise = new Promise((resolve, reject) => {
       childProcess.exec('curl ' + args, (err, stdout, stderr) => {

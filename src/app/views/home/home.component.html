@@ -1,86 +1,88 @@
-<header>
-	<div class="logo"></div>
-	<div class="description">
-		Sonder is an internal application based on sourcing projects in websites such as Kickstarter or Indiegogo 
-	</div>
-</header>
+<section class="landing">
+	<header>
+		<div class="logo"></div>
+		<div class="description">
+			Sonder is an internal application based on sourcing projects in websites such as Kickstarter or Indiegogo 
+		</div>
+	</header>
 
-<section class="main_search">
-	<h1>What are you looking for ?</h1>
-	<div class="stripes">
-		<form (ngSubmit)="search(keywords, sort)" name="searchbar">
-			<input value="" type="submit">
-			<input type="text" name="search" [(ngModel)]="keywords" autofocus [disabled]="!hardwareclub.connected" placeholder="Try to search Hardware, Technologies or IoT">
-		</form>
-	</div>
-</section>
-
-<footer>
-	<ul class="services">
-		<li class="icon kickstarter" [class.active]="kickstarter.connected" (click)="openLogin('kickstarter')"></li>
-		<li class="icon indiegogo" [class.active]="indiegogo.connected" (click)="openLogin('indiegogo')"></li>
-		<li class="icon hardwareclub" [class.active]="hardwareclub.connected" (click)="openLogin('hardwareclub')"></li>
-	</ul>
-	<p class="connected">{{services}} services connected</p>
-</footer>
-
-<section class="login" [class.open]="loginPage !== ''">
-	<div class="grey_zone" (click)="closePanel()"></div>
-	<section>
-		<button class="close" (click)="closePanel()"></button>
-		<div class="content">
-			<div class="logo">
-				<div class="icon" [ngClass]="loginPage"></div>
-			</div>
-			<h2>Sonder < • > {{loginPage}}</h2>
-			<p>In order to add {{loginPage}}'s source, we need to log in with your account. Please enter your {{loginPage}}'s login credentials and then click on Login. We won't access your personal information or post on your profile. </p>
-			<form (ngSubmit)="kickstarterLogin(kickstarter.email, kickstarter.password)" *ngIf="loginPage === 'kickstarter'">
-				<label for="email">email</label>
-				<input type="email" name="email" [(ngModel)]="kickstarter.email" placeholder="email">
-
-				<label for="password">password</label>
-				<input type="password" name="password" [(ngModel)]="kickstarter.password" placeholder="password">
-
-				<div class="remember">
-					<input [(ngModel)]="kickstarter.remember" type= "checkbox" name="kickstarter_remember">
-				</div>
-				<p class="error">{{errorLogin}}</p>
-
-				<input [value]="'Login to ' + loginPage" type="submit" *ngIf="!loading">
-				<p class="wait" *ngIf="loading">please wait</p>
-			</form>
-
-			<form (ngSubmit)="indiegogoLogin(indiegogo.email, indiegogo.password)" *ngIf="loginPage === 'indiegogo'">
-				<label for="email">email</label>
-				<input type="email" name="email" [(ngModel)]="indiegogo.email" placeholder="email">
-
-				<label for="password">password</label>
-				<input type="password" name="password" [(ngModel)]="indiegogo.password" placeholder="password">
-
-				<div class="remember">
-					<input [(ngModel)]="indiegogo.remember" type= "checkbox" name="indiegogo_remember">
-				</div>
-				<p class="error">{{errorLogin}}</p>
-
-				<input [value]="'Login to ' + loginPage" type="submit" *ngIf="!loading">
-				<p class="wait" *ngIf="loading">please wait</p>
-			</form>
-
-			<form (ngSubmit)="hardwareclubLogin(hardwareclub.email, hardwareclub.password)" *ngIf="loginPage === 'hardwareclub'">
-				<label for="email">email</label>
-				<input type="email" name="email" [(ngModel)]="hardwareclub.email" placeholder="email">
-
-				<label for="password">password</label>
-				<input type="password" name="password" [(ngModel)]="hardwareclub.password" placeholder="password">
-
-				<div class="remember">
-					<input [(ngModel)]="hardwareclub.remember" type= "checkbox" name="hardwareclub_remember">
-				</div>
-				<p class="error">{{errorLogin}}</p>
-
-				<input [value]="'Login to ' + loginPage" type="submit" *ngIf="!loading">
-				<p class="wait" *ngIf="loading">please wait</p>
+	<section class="main_search">
+		<h1>What are you looking for ?</h1>
+		<div class="stripes">
+			<form (ngSubmit)="search(keywords, 'popularity')" name="searchbar">
+				<input value="" type="submit">
+				<input type="text" name="search" [(ngModel)]="keywords" autofocus [disabled]="!hardwareclub.connected" placeholder="Try to search Hardware, Technologies or IoT">
 			</form>
 		</div>
+	</section>
+
+	<footer>
+		<ul class="services">
+			<li class="icon kickstarter" [class.active]="kickstarter.connected" (click)="openLogin('kickstarter')"></li>
+			<li class="icon indiegogo" [class.active]="indiegogo.connected" (click)="openLogin('indiegogo')"></li>
+			<li class="icon hardwareclub" [class.active]="hardwareclub.connected" (click)="openLogin('hardwareclub')"></li>
+		</ul>
+		<p class="connected">{{services}} services connected</p>
+	</footer>
+
+	<section class="login" [class.open]="loginPage !== ''">
+		<div class="grey_zone" (click)="closePanel()"></div>
+		<section>
+			<button class="close" (click)="closePanel()"></button>
+			<div class="content">
+				<div class="logo">
+					<div class="icon" [ngClass]="loginPage"></div>
+				</div>
+				<h2>Sonder < • > {{loginPage}}</h2>
+				<p>In order to add {{loginPage}}'s source, we need to log in with your account. Please enter your {{loginPage}}'s login credentials and then click on Login. We won't access your personal information or post on your profile. </p>
+				<form (ngSubmit)="kickstarterLogin(kickstarter.email, kickstarter.password)" *ngIf="loginPage === 'kickstarter'">
+					<label for="email">email</label>
+					<input type="email" name="email" [(ngModel)]="kickstarter.email" placeholder="email">
+
+					<label for="password">password</label>
+					<input type="password" name="password" [(ngModel)]="kickstarter.password" placeholder="password">
+
+					<div class="remember">
+						<input [(ngModel)]="kickstarter.remember" type= "checkbox" name="kickstarter_remember">
+					</div>
+					<p class="error">{{errorLogin}}</p>
+
+					<input [value]="'Login to ' + loginPage" type="submit" *ngIf="!loading">
+					<p class="wait" *ngIf="loading">please wait</p>
+				</form>
+
+				<form (ngSubmit)="indiegogoLogin(indiegogo.email, indiegogo.password)" *ngIf="loginPage === 'indiegogo'">
+					<label for="email">email</label>
+					<input type="email" name="email" [(ngModel)]="indiegogo.email" placeholder="email">
+
+					<label for="password">password</label>
+					<input type="password" name="password" [(ngModel)]="indiegogo.password" placeholder="password">
+
+					<div class="remember">
+						<input [(ngModel)]="indiegogo.remember" type= "checkbox" name="indiegogo_remember">
+					</div>
+					<p class="error">{{errorLogin}}</p>
+
+					<input [value]="'Login to ' + loginPage" type="submit" *ngIf="!loading">
+					<p class="wait" *ngIf="loading">please wait</p>
+				</form>
+
+				<form (ngSubmit)="hardwareclubLogin(hardwareclub.email, hardwareclub.password)" *ngIf="loginPage === 'hardwareclub'">
+					<label for="email">email</label>
+					<input type="email" name="email" [(ngModel)]="hardwareclub.email" placeholder="email">
+
+					<label for="password">password</label>
+					<input type="password" name="password" [(ngModel)]="hardwareclub.password" placeholder="password">
+
+					<div class="remember">
+						<input [(ngModel)]="hardwareclub.remember" type= "checkbox" name="hardwareclub_remember">
+					</div>
+					<p class="error">{{errorLogin}}</p>
+
+					<input [value]="'Login to ' + loginPage" type="submit" *ngIf="!loading">
+					<p class="wait" *ngIf="loading">please wait</p>
+				</form>
+			</div>
+		</section>
 	</section>
 </section>

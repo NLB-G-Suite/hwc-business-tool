@@ -48,6 +48,7 @@ export class ProjectService {
           project.googleSave = row[0];
           project.pined = row[0].pined;
           project.notes = row[0].notes;
+          project.seen = row[0].seen;
           resolve(project);
         } else {
           resolve(null);
@@ -57,24 +58,16 @@ export class ProjectService {
   }
   public saveProject(project: Project): Promise<any> {
     return new Promise((resolve, reject) => {
-      // Check if exist
-      this.loadProject(project).then((p) => {
-        if (p) {
-          this.google.getHeaders(this.sheet).then((params) => {
-            console.log(params);
-            for (let param of params) {
-              p.googleSave[param] = p[param];
-            }
-            p.googleSave.save();
-          });
-        } else {
-          // Add new
-          this.google.addRow(this.sheet, project).then((row) => {
-            project.googleSave = row;
-            resolve(project);
-          });
-        }
-      });
+      if (project.googleSave !== null) {
+        project = this.updateGoogleObject(project);
+        project.googleSave.save();
+      } else {
+        // Add new
+        this.google.addRow(this.sheet, project).then((row) => {
+          project.googleSave = row;
+          resolve(project);
+        });
+      }
     });
   }
   public deleteProject(project: Project) {
@@ -107,9 +100,35 @@ export class ProjectService {
         origin: row.origin,
         pined: row.pined,
         notes: row.notes,
+        seen: row.seen === 'VRAI' ? true : false,
         googleSave: row
       }));
     }
     return projects;
+  }
+
+  public updateGoogleObject(project: any): Project {
+
+    project.googleSave.identifiant =  project.identifiant;
+    project.googleSave.name = project.name;
+    project.googleSave.country = project.country;
+    project.googleSave.city = project.city;
+    project.googleSave.creatorName = project.creatorname;
+    project.googleSave.creatorImage = project.creatorimage;
+    project.googleSave.usdCollected = project.usdcollected;
+    project.googleSave.collected = project.collected;
+    project.googleSave.goal = project.goal;
+    project.googleSave.currency = project.currency;
+    project.googleSave.currencySymbol = project.currencysymbol;
+    project.googleSave.backers = project.backers;
+    project.googleSave.image = project.image;
+    project.googleSave.video = project.video;
+    project.googleSave.url = project.url;
+    project.googleSave.origin = project.origin;
+    project.googleSave.pined = project.pined;
+    project.googleSave.notes = project.notes;
+    project.googleSave.seen = project.seen;
+
+    return project;
   }
 }

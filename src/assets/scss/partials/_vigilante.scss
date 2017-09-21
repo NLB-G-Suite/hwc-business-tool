@@ -1,0 +1,55 @@
+.vigilante {
+  background: #f5f6f7;;
+  overflow-y: auto;
+  font-family: 'MarkPro';
+  padding: 81px;
+  height: 100vh;
+  user-select: none;
+  header {
+    margin-top: 50px;
+    h1 {
+      font-size: 21px;
+      margin-bottom: 31px;
+      padding: 0;
+    }
+  }
+  .content {
+    border-radius: 8px;
+    background-color: white;
+    width: calc(100% - 102px);
+    padding: 15px 51px;
+    table {
+      width: 100%;
+      tr {
+        font-size: 17px;
+        height: 73px;
+        border-bottom: 1px solid #E3E3E3;
+        text-align: left;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba($light_grey, 0.25);
+        }
+        &:active {
+          background-color: rgba($light_grey, 0.55);
+        }
+        &.title {
+          font-size: 19px;
+          border: none;
+          cursor: initial;
+          &:hover, &:active {
+            background: none;
+          }
+        }
+        th {
+          padding-left: 15px;
+          &.changed {
+            color: #E2721F;
+          }
+          &.unchanged {
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+}

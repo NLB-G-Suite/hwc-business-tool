@@ -5,4 +5,5 @@ export class IndiegogoOption {
   public city?: string;
   public country?: string;
   public status?: string;
+  public token?: string;
 }

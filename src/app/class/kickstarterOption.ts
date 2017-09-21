@@ -6,4 +6,5 @@ export class KickstarterOption {
   public sort?: string;
   public count?: number;
   public perPage?: number;
+  public token?: string;
 }

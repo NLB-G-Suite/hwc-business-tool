@@ -6,9 +6,6 @@ import { HardwareClubService } from '../../services/hardwareclub.service';
 import { IndiegogoService } from '../../services/indiegogo.service';
 import { StorageService } from '../../services/storage.service';
 
-import { GoogleSheetService } from '../../services/google-sheet.service';
-import { ProjectService } from '../../services/project.service';
-
 import { IndiegogoOption } from '../../class/indiegogoOption';
 import { KickstarterOption } from '../../class/kickstarterOption';
 import { Project } from '../../class/project';
@@ -19,7 +16,7 @@ import * as electron from 'electron';
 
 @Component({
   selector: 'home',
-  providers: [KickstarterService, StorageService, HardwareClubService, IndiegogoService, GoogleSheetService, ProjectService],
+  providers: [KickstarterService, StorageService, HardwareClubService, IndiegogoService],
   templateUrl: './home.component.html',
   styleUrls: ['../../../assets/scss/main.scss']
 })
@@ -31,13 +28,6 @@ export class HomeComponent {
 
   public keywords: string;
   public sort: string;
-  public kickstarterResult = [];
-  public indiegogoResult = [];
-  public allResults = [];
-  public menuOpen = false;
-  public focusResult = false;
-  public focusItem = false;
-  public selectedProject: Project = null;
 
   public loginPage = '';
   public loading = false;
@@ -69,8 +59,6 @@ export class HomeComponent {
     public kickstarterService: KickstarterService,
     public hardwareclubService: HardwareClubService,
     public indiegogoService: IndiegogoService,
-    public googleSheetService: GoogleSheetService,
-    public projectService: ProjectService,
     private storageService: StorageService,
     // public router: Router
     ) {
@@ -82,50 +70,11 @@ export class HomeComponent {
     this.data.sort = sort;
     this.data.page = 'search';
     this.dataChange.emit(this.data);
-    this.onSearch.emit();
+    this.onSearch.emit(this.data);
   }
 
   public openLogin(service: string): void {
     this.loginPage = service;
-  }
-
-  // ————— CUSTOM METHODS —————
-  public selectProject(project: Project) {
-    // Open link to browser
-    electron.shell.openExternal(project.url);
-  }
-
-  public refreshResearch() {
-    this.search(this.keywords, this.sort);
-  }
-
-  public selectSort(sort: string) {
-    this.sort = sort;
-    this.refreshResearch();
-  }
-
-  public mergeArrays(arrayA: Project[], arrayB: Project[]) {
-    if (!arrayA.length) {
-      return this.mergeSave(arrayB);
-    } else {
-      for (let project of arrayB) {
-        arrayA.push(project);
-      }
-    }
-    return this.mergeSave(arrayA);
-  }
-  public mergeSave(array): Project[] {
-    let projects = this.projectService.projects;
-    for (let project of array) {
-      for (let saved of projects) {
-        if ( project.identifiant === saved.identifiant && project.origin === saved.origin ) {
-          project.googleSave = saved.googleSave;
-          project.pined = saved.pined;
-          project.notes = saved.notes;
-        }
-      }
-    }
-    return array;
   }
 
   // ————— KICKSTARTER —————

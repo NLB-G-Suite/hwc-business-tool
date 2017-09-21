@@ -1,0 +1,67 @@
+<section class="search">
+
+  <div class="comment" *ngIf="commentOpen && selectedProject !== null">
+    <div class="top">
+      <h2>Comments</h2>
+      <button class="close" (click)="closeComment(selectedProject)"></button>
+    </div>
+    <div class="content">
+      <!-- <span class="time">Last update : 3 hours ago</span> -->
+      <textarea [(ngModel)]="selectedProject.notes" placeholder="Write comments ..."></textarea>
+    </div>
+  </div>
+
+  <div class="content">
+    <header>
+      <div class="info" *ngIf="data !== undefined&& data.allResults !== undefined && data.allResults.length && data.keywords !== ''">
+        <p>We have found {{data.allResults.length}} projects based on the keyword "{{data.keywords}}"</p>
+      </div>
+      <ul class="filters">
+        <li *ngIf="data !== undefined">
+          <label for="sort">Sort by :</label>
+          <select name="sort" [(ngModel)]="data.sort" (change)="selectSort(data.sort)">
+            <option value="popularity">Popularity</option>
+            <option value="newest">Newest</option>
+            <option value="most_founded">Most Founded</option>
+            <option value="end_date">End Date</option>
+          </select>
+        </li>
+      </ul>
+    </header>
+
+    <ul class="results" *ngIf="data !== undefined && data.allResults !== undefined && data.allResults.length">
+
+       <li class="project" [class.seen]="project.seen" *ngFor="let project of data.allResults" (click)="selectProject(project)">
+        <div class="card" [ngStyle]="{'background-image': 'url(' + project.image + ')'}">
+          <div class="header">
+            <div [ngClass]="'source ' + project.origin"></div>
+            <div class="options">
+              <button class="comments" *ngIf="project.notes === ''" (click)="openComment(project, $event)">+</button>
+              <button class="comments filled" *ngIf="project.notes != ''" (click)="openComment(project, $event)">!</button>
+            </div>
+          </div>
+          <div class="title">
+            {{project.name}}
+          </div>
+        </div>
+        <ul class="infos">
+          <li class="info">
+            <h4>Collected</h4>
+            <h3>{{project.collected}}{{project.currencySymbol}}</h3>
+          </li>
+          <li class="info">
+            <h4>Backers</h4>
+            <h3>{{project.backers}}</h3>
+          </li>
+          <li class="info">
+            <h4>Goal Backed</h4>
+            <h3 *ngIf="project.collected > project.goal">YES</h3>
+            <h3 *ngIf="project.collected < project.goal">NO</h3>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+
+  </div>
+</section>

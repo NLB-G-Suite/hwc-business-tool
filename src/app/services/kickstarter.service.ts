@@ -52,7 +52,7 @@ export class KickstarterService {
     if (option.sort !== undefined) { params += '&sort=' + option.sort; }
     if (option.count !== undefined) { params += '&count=' + option.count; }
     if (option.perPage !== undefined) { params += '&per_page=' + option.perPage; }
-    return this.cURL(this.baseUrl + '/discover', null, this.token, params);
+    return this.cURL(this.baseUrl + '/discover', null, option.token, params);
   }
   /*
    * "categories": "https://api.kickstarter.com/v1/categories",
@@ -67,6 +67,10 @@ export class KickstarterService {
     console.log(results);
     let list = [];
     for (let res of results.projects) {
+      let video = '';
+      if (res.video !== null) {
+        video = res.video.high;
+      }
       list.push(new Project({
         identifiant: res.id,
         name: res.name,
@@ -81,7 +85,7 @@ export class KickstarterService {
         currencySymbol: res.currency_symbol,
         backers: res.backers_count,
         image: res.profile.feature_image_attributes.image_urls.default,
-        video: res.video.high,
+        video: video,
         url: res.urls.web.project,
         origin: 'kickstarter'
       }));
@@ -104,6 +108,8 @@ export class KickstarterService {
       "-H 'content-type: application/json'",
       "-d '" + JSON.stringify(body) + "'"
     ].join(' ');
+
+    console.log(args);
 
     let promise = new Promise((resolve, reject) => {
       childProcess.exec('curl ' + args, (err, stdout, stderr) => {

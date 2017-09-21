@@ -7,5 +7,8 @@
   <button (click)="updateSoftware()">Install now</button>
 </div>
 
-<search #search [(data)]="data" *ngIf="data.page === 'search'"></search>
-<home  #home [(data)]="data" (onSearch)="searchComponent.search(data.keywords, data.sort)" *ngIf="data.page === 'home'"></home>
+<navigation #navigation class="container top" [(data)]="data" [class.visible]="data.page !== 'home'"></navigation>
+
+<home  #home class="container left" [(data)]="data" (onSearch)="searchFunction($event)" [class.visible]="data.page === 'home'"></home>
+<search #search class="container right" [class.visible]="data.page === 'search'" (onSearch)="searchFunction($event)" [(data)]="data"></search>
+<vigilante #vigilante  class="container right" [class.visible]="data.page === 'vigilante'" [(data)]="data"></vigilante>
