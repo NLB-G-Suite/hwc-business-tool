@@ -1,27 +1,18 @@
-# Coloris 2
-##### Actual version : 2.0.0
-This is a new version of coloris. Find the original program here : [Coloris].
-
-The software is again under GNU license but is based on Angular 2 and Electron.
-
-### More features are coming out : 
-- Auto update
-- Easier installation
-- New interface
-- More module
-- Project management
-- Less bugs
-- New design
-- More explanation on how to develop myself (meaning YOU can also participate ;) )
-
-## How to install the software : 
-Find latest version [On our website] depending of your os.
-Maybe if I find how to do, I'll use github release feature.
+# Sonder
+Tiny software use to keep tracking of incoming startups on Indiegogo or Kickstarter.
+### Feature list : 
+- Login to Kickstarter
+- Login to Indiegogo
+- Search on kickstarter and indiegogo crowdfunding projects through their APIs
+- Display seen and unseen projects
+- Leave comments on each projects
+- Filters results
+- Keep tracking of site updates
 
 ## How to get the code : 
 
-1) Get the code with `git clone https://github.com/Calderis/coloris-2
-2) Open the folder `cd coloris-2`
+1) Get the code with `git clone https://github.com/Calderis/hwc-business-tool
+2) Open the folder `cd hwc-business-tool`
 3) Install packages `npm install`
 
 You'll find all the code inside src/
@@ -49,6 +40,4 @@ To generate a token, go to [https://github.com/settings/tokens/new](https://gith
 ### If you want to build for different os than your
 Go and see the documentation ofr [multiplatform building].
 
-[Coloris]: <http://calderis.github.io/Coloris>
-[On our website]: <http://coloris-app.fr>
 [multiplatform building]: <https://github.com/electron-userland/electron-builder/wiki/Multi-Platform-Build#os-x>
